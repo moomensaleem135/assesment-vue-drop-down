@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- Add a background color to the entire page -->
+  <div
+    class="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+  >
+    <!-- Add a heading with larger font size and bold text -->
+    <h1 class="text-4xl font-bold mb-8">Welcome to Our Website</h1>
+
+    <!-- Include the DropdownMenu Component -->
+    <DropdownMenu :items="dropdownItems" @item-selected="handleItemSelected" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DropdownMenu from "./components/DropdownMenu.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    DropdownMenu,
+  },
+  data() {
+    return {
+      dropdownItems: [
+        { title: "Item 1", value: "1" },
+        { title: "Item 2", value: "2" },
+        // Add more items as needed
+      ],
+    };
+  },
+  methods: {
+    handleItemSelected(item) {
+      // Handle item selection logic here
+      console.log(`Selected item in App.vue: ${item.title}`);
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* You can add global styles here if needed */
 </style>
